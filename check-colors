@@ -1,0 +1,8 @@
+cat colors | while read color ; do 
+  grep $color basic-colors 
+  if [ $? - eq 0 ] ; then 
+    print "$color is a basic color"
+  else 
+    print "$color is not a basic color"
+  fi 
+ done
