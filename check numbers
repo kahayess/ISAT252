@@ -1,0 +1,24 @@
+cat newstuff | while read junk ; do
+   size=`echo $junk | wc -c`
+   echo $size
+   if [ $size -eq 2 ] ; then
+     echo $junk | grep [a-z]
+     if [ $? -eq 0 ] ; then
+        echo "$junk is a lowercase letter"
+     else
+       echo $junk | grep [A-Z]
+       if [ $? -eq 0 ] ; then
+         echo "$junk is a uppercase letter"
+       else
+          echo $junk | grep [0-9]
+          if [ $? -eq 0 ] ; then
+            echo "$junk is a number"
+          else
+            echo "$junk is neither a number nor a letter"
+          fi
+        fi
+      fi
+   else
+      echo "$junk is a word"
+   fi
+done
